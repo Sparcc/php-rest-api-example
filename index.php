@@ -1,3 +1,12 @@
+<?php
+echo "page has been loaded.";
+$pageNumber = isset($_GET['page']) ? $_GET['page'] : 1;
+echo "page number is " . (string)$pageNumber;
+echo '<script type="text/javascript">';
+echo 'var pageNumber = ' . $pageNumber;
+echo '</script>';
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +51,7 @@
  
 <!-- container of our app -->
 <div class="container" ng-app="myApp">
- 
+
     <!-- read products template -->
     <ng-include src="'./app/products/read_products.template.html'"></ng-include>
  
@@ -50,3 +59,5 @@
  
 </body>
 </html>
+<?php
+echo "angularJS has been loaded.";

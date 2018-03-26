@@ -26,7 +26,7 @@
  
         <md-content flex>
             <!-- show product record list -->
-            <md-list ng-init="readProducts()">
+            <md-list ng-init="readProductsPage()">
                 <md-list-item class="md-3-line" ng-repeat="product in products">
  
                     <!-- product information -->
@@ -45,7 +45,21 @@
                     <md-divider ng-if="!$last"></md-divider>
                 </md-list-item>
             </md-list>
+            <!-- show nav bar 
+            <!--
+            <md-nav-bar ng-init="readPages()" aria-label="NavigationBar" md-selected-nav-item="currentPageNavNumber">
+                <md-nav-item name="page{{pages.page}}" ng-repeat="page in pages">
+                {{pages.page}}
+                </md-nav-item>
+            </md-nav-bar>
+            -->
         </md-content>
+        <h2>Page 1 {{currentPage}}</p>
+        <md-input-container class="md-block m-b-0px">
+            <ul style="list-style-type: none;margin: 0;padding: 0;overflow: hidden;" ng-init="readPages()" >
+                <li style="float:left" ng-repeat="p in pages"><a href="{{baseUrl+'?page='+p.page}}">Page {{p.page}}</a></li>
+            </ul>
+        </md-input-container>
     </div>
  
     <div flex="10"></div>

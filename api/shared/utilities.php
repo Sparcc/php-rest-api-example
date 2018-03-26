@@ -13,12 +13,14 @@ class Utilities{
         $total_pages = ceil($total_rows / $records_per_page);
  
         // range of links to show
-        $range = 2;
+        $range = 10;
  
         // display links to 'range of pages' around 'current page'
-        $initial_num = $page - $range;
-        $condition_limit_num = ($page + $range)  + 1;
- 
+        //$initial_num = $page - $range;
+        //$condition_limit_num = ($page + $range)  + 1;
+        $initial_num = 1;
+        $condition_limit_num = $total_pages + 1;
+        
         $paging_arr['pages']=array();
         $page_count=0;
          

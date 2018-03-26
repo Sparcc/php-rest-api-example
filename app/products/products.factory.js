@@ -2,12 +2,27 @@ app.factory("productsFactory", function($http){
  
     var factory = {};
     var baseUrl = 'https://sparcccode.000webhostapp.com/';
- 
+    
+    factory.readPages  = function(){
+        return $http({
+            method: 'GET',
+            url: 'api/product/read_paging.php'
+        });
+    };
+    
     // read all products
     factory.readProducts = function(){
         return $http({
             method: 'GET',
             url: 'api/product/read.php'
+        });
+    };
+    
+    // read all products on a page
+    factory.readProductsPage = function(pageNumber) {
+        return $http({
+            method: 'GET',
+            url: 'api/product/read_paging.php?page='+pageNumber
         });
     };
      

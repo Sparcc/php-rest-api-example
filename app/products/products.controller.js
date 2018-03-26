@@ -1,15 +1,38 @@
 app.controller('productsController', function($scope, $mdDialog, $mdToast, productsFactory){
- 
+    $scope.baseUrl = 'https://sparcccode.000webhostapp.com/';
+    $scope.currentPage = 0
+    
     // read products
     $scope.readProducts = function(){
- 
         // use products factory
         productsFactory.readProducts().then(function successCallback(response){
             $scope.products = response.data.records;
         }, function errorCallback(response){
             $scope.showToast("Unable to read record.");
         });
- 
+    }
+    
+    // read products page
+    $scope.readProductsPage = function(){
+        $scope.currentPage = pageNumber;
+        // use products factory
+        //var pageNumber = 1 The function below works fine and was tested
+        productsFactory.readProductsPage($scope.currentPage).then(function successCallback(response){
+            $scope.products = response.data.records;
+        }, function errorCallback(response){
+            $scope.showToast("Unable to read record.");
+        });
+    }
+    
+    //read pages and get page numbers
+    $scope.readPages = function(){
+        productsFactory.readPages().then(function successCallback(response){
+            $scope.pages = response.data.paging.pages;
+            console.log("printing out paging.pages");
+            //console.log($scope.pages);
+        }, function errorCallback(response){
+            $scope.showToast("Unable to read pages.");
+        });
     }
      
     // show 'create product form' in dialog box
